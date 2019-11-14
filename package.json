@@ -1,0 +1,48 @@
+{
+  "name": "parse-ssn",
+  "version": "0.0.1",
+  "description": "Tiny utils to handle formatting, masking, and validating of US Social Security numbers.",
+  "source": "index.ts",
+  "main": "dist/parse-ssn.js",
+  "module": "dist/parse-ssn.es.js",
+  "unpkg": "dist/parse-ssn.umd.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle build",
+    "watch": "microbundle watch --compress false",
+    "publish": "npm publish",
+    "test": "ava test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/truework/parse-ssn.git"
+  },
+  "author": "estrattonbailey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/truework/parse-ssn/issues"
+  },
+  "homepage": "https://github.com/truework/parse-ssn#readme",
+  "keywords": [
+    "social security number",
+    "ssn",
+    "parser"
+  ],
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "microbundle": "^0.11.0",
+    "ts-node": "^8.4.1"
+  },
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
