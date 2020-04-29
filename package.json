@@ -13,7 +13,6 @@
   "scripts": {
     "build": "microbundle build",
     "watch": "microbundle watch --compress false",
-    "publish": "npm publish",
     "test": "ava test.ts"
   },
   "repository": {
