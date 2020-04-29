@@ -1,7 +1,6 @@
-# parse-ssn
+# parse-ssn ![npm](https://img.shields.io/npm/v/parse-ssn) [![](https://badgen.net/bundlephobia/minzip/parse-ssn)](https://bundlephobia.com/result?p=parse-ssn)
 
-Tiny utils to handle formatting, masking, and validating of US Social Security
-numbers. **400 bytes gzipped.**
+Tiny toolkit to format, mask, and validate US Social Security numbers.
 
 ```bash
 npm i parse-ssn --save
@@ -9,14 +8,7 @@ npm i parse-ssn --save
 
 ## Usage
 
-`parse-ssn` includes four utilities: `mask`, `format`, `validate`, and `clean`.
-
-The library defaults to using `*` as a number placeholder, and `-` as a separator. To
-mask and format other variations, pass additional optional props.
-
-### `mask`
-
-Signature: `mask(value: string, placeholder = '*'): string`
+#### `mask(value: string[, placeholder = '*']): string`
 
 ```javascript
 import { mask } from "parse-ssn";
@@ -25,10 +17,7 @@ format("123121234"); // => *****1234
 format("123121234", "#"); // => #####1234
 ```
 
-### `format`
-
-Signature: `format(value: string, separator = '-', existingPlaceholder = '*'):
-string`
+#### `format(value: string[, separator = '-', existingPlaceholder = '*']): string`
 
 ```javascript
 import { format } from "parse-ssn";
@@ -36,6 +25,8 @@ import { format } from "parse-ssn";
 format("123121234"); // => 123-12-1234
 format("123121234", " "); // => 123 12 1234
 ```
+
+Compose methods for additional flexibility:
 
 ```javascript
 import { format, mask } from "parse-ssn";
@@ -53,9 +44,7 @@ import { format } from "parse-ssn";
 format("#####1234", "-", "#"); // => ###-##-1234
 ```
 
-### `validate`
-
-Signature: `validate(value: string): boolean`
+#### `validate(value: string): boolean`
 
 Validation is based on information gathered from the [Social Security
 Administration's website](https://www.ssa.gov/employer/stateweb.htm). If an edge
@@ -65,13 +54,9 @@ case is missing, please open an issue.
 import { validate } from "parse-ssn";
 
 validate("123121234"); // => true
-validate("12312123"); // => false
-validate("1231212345"); // => false
 ```
 
-### `clean`
-
-Signature: `clean(value: string, exception = ''): string`
+#### `clean(value: string, exception = ''): string`
 
 By default, `clean` strips out all characters _except_ numbers, _and_ trims the
 string to nine characters.
@@ -84,7 +69,7 @@ clean(" 123 12-1234") // => 123121234
 clean("123-12-1234-12345") // => 123121234
 ```
 
-To clean a string that may be masked, pass exceptions.
+To clean a string that may be masked, pass an exception.
 
 ```javascript
 import { clean } from "parse-ssn";
@@ -94,4 +79,4 @@ clean("*****1234", "*") // => *****1234
 
 ### License
 
-MIT License © [Eric Bailey](https://estrattonbailey.com)
+MIT License © [Truework](https://www.truework.com)

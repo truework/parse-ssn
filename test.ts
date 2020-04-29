@@ -52,8 +52,8 @@ test(`validate`, async t => {
   t.is(ssn.validate('666121234'), false);
   t.is(ssn.validate('900121234'), false);
   t.is(ssn.validate('901121234'), false);
-  t.is(ssn.validate('733121234'), true);
-  t.is(ssn.validate('734121234'), false);
+  t.is(ssn.validate('700121234'), true);
+  t.is(ssn.validate('800121234'), true);
 
   // group
   t.is(ssn.validate('123001234'), false);

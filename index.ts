@@ -32,10 +32,5 @@ export function mask(value: string, placeholder = "*"): string {
 }
 
 export function validate(value: string): boolean {
-  // @see https://github.com/uphold/ssn-validator
-  const format = /^(?!666|000|9\d{2})\d{3}[\s-–]*(?!00)\d{2}[\s-–]*(?!0{4})\d{4}$/.test(
-    value
-  );
-  if (!format) return false;
-  return parseInt(value.slice(0, 3), 10) <= 733;
+  return /^(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4}$/.test(value);
 }
