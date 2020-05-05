@@ -1,6 +1,6 @@
 {
   "name": "parse-ssn",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tiny utils to handle formatting, masking, and validating of US Social Security numbers.",
   "source": "index.ts",
   "main": "dist/parse-ssn.js",
