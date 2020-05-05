@@ -65,4 +65,10 @@ test(`validate`, async t => {
   // length
   t.is(ssn.validate('12312123'), false);
   t.is(ssn.validate('1231212345'), false);
+
+  // with formatting
+  t.is(ssn.validate('123-12-1234'), true);
+  t.is(ssn.validate('123 12 1234', ' '), true);
+  t.is(ssn.validate('123-12-12345'), false);
+  t.is(ssn.validate('12-312-1234'), false);
 })

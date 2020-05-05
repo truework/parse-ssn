@@ -31,6 +31,8 @@ export function mask(value: string, placeholder = "*"): string {
     .join("");
 }
 
-export function validate(value: string): boolean {
-  return /^(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4}$/.test(value);
+export function validate(value: string, exception = "-"): boolean {
+  return new RegExp(
+    `^(?!666|000|9\\d{2})\\d{3}${exception}{0,1}(?!00)\\d{2}${exception}{0,1}(?!0{4})\\d{4}$`
+  ).test(value);
 }
