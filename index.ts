@@ -12,11 +12,12 @@ export function format(
   separator = "-",
   existingPlaceholder = "*"
 ): string {
-  const s = clean(value, existingPlaceholder);
+  const s = clean(value, existingPlaceholder).split('');
 
   return [0, 1, 2, 3, 3, 4, 5, 5, 6, 7, 8, 9, 10]
     .reduce((p, fake, i) => {
-      return p.concat(i === 3 || i === 6 ? separator : s[fake] ? s[fake] : " ");
+      if (!s.length) return p
+      return p.concat(i === 3 || i === 6 ? separator : s.shift() || " ");
     }, [])
     .join("")
     .trim();

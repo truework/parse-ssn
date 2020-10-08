@@ -39,8 +39,26 @@ test(`mask: works with defaults`, async t => {
   t.is(ssn.mask('123121234'), '*****1234');
 })
 
+test(`mask: masks all but last char`, async t => {
+  t.is(ssn.mask('1231'), '***1');
+  t.is(ssn.mask('12312'), '****2');
+})
+
+test(`mask: doesn't fail with bad values`, async t => {
+  t.is(ssn.mask('1231212'), '*****12');
+  t.is(ssn.mask(' 123 1212'), '*****12');
+})
+
 test(`mask: can pass optional placeholder`, async t => {
   t.is(ssn.mask('123121234', '-'), '-----1234');
+})
+
+test(`mask: can mask formatted values`, async t => {
+  t.is(ssn.mask('123-12-5678'), '*****5678');
+})
+
+test(`both: can format masked partial-values`, async t => {
+  t.is(ssn.format(ssn.mask('12312')), '***-*2');
 })
 
 test(`validate`, async t => {
