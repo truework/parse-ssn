@@ -1,6 +1,6 @@
 {
   "name": "parse-ssn",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Tiny utils to handle formatting, masking, and validating of US Social Security numbers.",
   "source": "index.ts",
   "main": "dist/parse-ssn.js",
@@ -13,7 +13,15 @@
   "scripts": {
     "build": "microbundle build",
     "watch": "microbundle watch --compress false",
-    "test": "ava test.ts"
+    "test": "ava test.ts",
+    "format": "prettier-standard ./*.ts --format",
+    "lint": "prettier-standard ./*.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier-standard --format --staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   },
   "repository": {
     "type": "git",
@@ -32,7 +40,12 @@
   ],
   "devDependencies": {
     "ava": "^2.4.0",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.0",
     "microbundle": "^0.11.0",
+    "prettier-standard": "^16.4.1",
+    "semantic-release": "^17.1.2",
     "ts-node": "^8.4.1"
   },
   "ava": {
@@ -43,5 +56,10 @@
     "require": [
       "ts-node/register"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
