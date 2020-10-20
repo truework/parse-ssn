@@ -14,8 +14,8 @@
     "build": "microbundle build",
     "watch": "microbundle watch --compress false",
     "test": "ava test.ts",
-    "format": "prettier-standard ./*.ts --format",
-    "lint": "prettier-standard ./*.ts"
+    "format": "prettier-standard --format",
+    "lint": "prettier-standard --lint"
   },
   "husky": {
     "hooks": {
