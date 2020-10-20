@@ -35,8 +35,8 @@ const masked = mask('123121234') // => *****1234
 const formatted = format(masked) // => ***-**-1234
 ```
 
-When dealing with formatting of masks that use a placeholder other than `*`, you
-need to pass additional information about the format.
+When dealing with formatting of masks that use an existing placeholder other
+than `*`, you need to pass additional information about the format.
 
 ```javascript
 import { format } from 'parse-ssn'
@@ -59,7 +59,8 @@ validate('123121234') // => true
 #### `clean(value: string, exception = ''): string`
 
 By default, `clean` strips out all characters _except_ numbers, _and_ trims the
-string to nine characters.
+string to nine characters. You probably want to use this first before `mask` or
+`format`.
 
 ```javascript
 import { clean } from 'parse-ssn'
