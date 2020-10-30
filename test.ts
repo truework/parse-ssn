@@ -90,3 +90,9 @@ test(`validate`, async t => {
   t.is(ssn.validate('123-12-12345'), false)
   t.is(ssn.validate('12-312-1234'), false)
 })
+
+test(`masking a masked value`, t => {
+  const masked = '*****3123'
+  const remasked = ssn.mask(masked, '*')
+  t.is(remasked, masked)
+})
