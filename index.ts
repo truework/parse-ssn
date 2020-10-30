@@ -24,7 +24,7 @@ export function format (
 }
 
 export function mask (value: string, placeholder = '*'): string {
-  return clean(value)
+  return clean(value, placeholder)
     .split('')
     .map((c, i, s) => {
       return i < 5 ? (i === s.length - 1 ? c : placeholder) : c
